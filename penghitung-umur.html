@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Penghitung Umur Sederhana</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f2f2f2;
+    }
+
+    .container {
+      max-width: 400px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .form-group input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .btn-container {
+      text-align: center;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      border: none;
+      color: #fff;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
+
+    #result {
+      text-align: center;
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+  </style>
+  <script>
+    function calculateAge() {
+      var birthDate = document.getElementById("birthDate").value;
+      var currentDate = new Date();
+      var selectedDate = new Date(birthDate);
+      
+      var age = currentDate.getFullYear() - selectedDate.getFullYear();
+      
+      // Periksa jika tanggal lahir di bulan yang sama dan belum melewati tanggal hari ini
+      if (
+        currentDate.getMonth() < selectedDate.getMonth() ||
+        (currentDate.getMonth() == selectedDate.getMonth() && currentDate.getDate() < selectedDate.getDate())
+      ) {
+        age--;
+      }
+      
+      var resultElement = document.getElementById("result");
+      resultElement.innerHTML = "Umur Anda adalah " + age + " tahun.";
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Penghitung Umur Sederhana</h1>
+    <div class="form-group">
+      <label for="birthDate">Tanggal Lahir:</label>
+      <input type="date" id="birthDate">
+    </div>
+    <div class="btn-container">
+      <button class="btn" onclick="calculateAge()">Hitung Umur</button>
+    </div>
+    <div id="result"></div>
+  </div>
+</body>
+</html>
